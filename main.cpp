@@ -16,6 +16,11 @@ void fight(Hero* hero, Hero* hero2)
 
 }
 
+void create()
+{
+
+}
+
 int main()
 {
     int hpKnight = 11;
