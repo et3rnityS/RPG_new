@@ -1,8 +1,8 @@
 #include <iostream>
 #include "hero.h"
-#include "knight.h"
-#include "mag.h"
 #include "elf.h"
+#include "mag.h"
+#include "knight.h"
 #include <cstdlib>
 #include <ctime>
 
