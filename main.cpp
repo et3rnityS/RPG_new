@@ -39,6 +39,18 @@ void create()
 {
 
 }
+Hero switchHero(Heroes hero)
+{
+    switch(hero)
+    {
+    case 0:
+        return Knight* hero = new Knight(13, 1);
+    case 1:
+        return Elf* hero = new Elf(9, 3);
+    case 2:
+        return Mag* hero = new Mag(11, 2);
+    }
+}
 int getRandomNumber(int min, int max)
 {
     static const double fraction = 1.0/(static_cast<double>(RAND_MAX)+1.0);
@@ -56,29 +68,16 @@ int main()
         hero2=static_cast<Heroes>(getRandomNumber(0, HEROES_MAX-1));
     }
 
-    switch(hero1)
-    {
-    case 0:
-        std::cout<<"1111"<<std::endl;
-        break;
-    case 1:
-        std::cout<<"2222"<<std::endl;
-        break;
-    case 2:
-        std::cout<<"3333"<<std::endl;
-        break;
-    default:
-        std::cout<<"Unknown hero!"<<std::endl;
 
-    }
-    int hpKnight = 11;
-    int damageKnight = 3;
+
+    Hero firstHero=switchHero(hero1);
+    Hero secondHero=switchHero(hero2);
 
   //  Knight* hero1 = new Knight(hpKnight, damageKnight);
 
     //Knight* hero2 = new Knight(9, 4);
 
-   // fight(hero1, hero2);
+   fight(firstHero, secondHero);
 
     return 0;
 }
