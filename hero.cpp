@@ -1,37 +1,39 @@
 #include "hero.h"
 
-Hero::Hero(int hp, int damage)
+Hero::Hero()
 {
-    this->m_hp = hp;
-    this->m_damage = damage;
+
 }
 
-int Hero::getHp() const
+Hero::Hero(std::string name, int health, int damage)
 {
-    return m_hp;
+    this->m_name=name;
+    this->m_health=health;
+    this->m_damage=damage;
+
 }
 
-void Hero::setHp(int hp)
+std::string Hero::getName()
 {
-    m_hp = hp;
+    return m_name;
 }
 
-void Hero::getDamage(int hit)
+int Hero::getHealth()
 {
-    this->m_hp -= hit;
+    return m_health;
 }
 
-void Hero::setDamage(int damage)
-{
-    m_damage = damage;
-}
-
-int Hero::doDamage()
+int Hero::getDamage()
 {
     return m_damage;
 }
 
+void Hero::getDamage(int damage)
+{
+    m_health-=damage;
+}
+
 bool Hero::isDead()
 {
-    return m_hp <=0;
+    return m_health<=0;
 }

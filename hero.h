@@ -1,30 +1,22 @@
 #ifndef HERO_H
 #define HERO_H
-
+#include <string>
 
 class Hero
 {
+private:
+    std::string m_name;
+    int m_health;
+    int m_damage;
 public:
-    Hero(int hp, int damage);
+    Hero();
+    Hero(std::string name, int health, int damage);
+    std::string getName();
+    int getHealth();
+    int getDamage();
+    void getDamage(int damage);
+    bool isDead();
 
-    virtual int getHp() const;
-    virtual void setHp(int hp);
-
-    virtual void getDamage(int hit);
-
-    virtual void setDamage(int damage);
-
-    virtual int doDamage();
-    virtual bool isDead();
-
-
-
-protected:
-    /**
-     * @brief m_hp
-     */
-    int m_hp = 10;
-    int m_damage = 2;
 
 };
 
