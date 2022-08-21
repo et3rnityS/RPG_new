@@ -1,22 +1,14 @@
 #include "knight.h"
 
-
-void Knight::getDamage(int hit)
+Knight::Knight()
 {
-    this->m_hp -= hit;
+
 }
 
-int Knight::doDamage()
+Knight::Knight(std::string name, int health, int damage):
+    Hero(name, health, damage)
 {
-    return m_damage;
+
 }
 
-bool Knight::isDead()
-{
-    return m_hp <=0;
-}
 
-int Knight::getHp() const
-{
-    return m_hp;
-}

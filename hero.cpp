@@ -23,7 +23,7 @@ int Hero::getHealth()
     return m_health;
 }
 
-int Hero::getDamage()
+int Hero::doDamage()
 {
     return m_damage;
 }

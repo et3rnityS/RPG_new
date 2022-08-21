@@ -1,21 +1,12 @@
 #include "elf.h"
 
-void Elf::getDamage(int damage)
+Elf::Elf()
 {
-    m_hp-=damage;
+
 }
 
-int Elf::doDamage()
+Elf::Elf(std::string name, int health, int damage):
+    Hero(name, health, damage)
 {
-    return m_damage;
-}
 
-bool Elf::isDead()
-{
-    return m_hp<=0;
-}
-
-int Elf::getHp() const
-{
-    return m_hp;
 }

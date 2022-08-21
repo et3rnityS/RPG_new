@@ -1,22 +1,12 @@
 #include "mag.h"
 
-
-void Mag::getDamage(int damage)
+Mag::Mag()
 {
-    m_hp-=damage;
+
 }
 
-int Mag::doDamage()
+Mag::Mag(std::string name, int health, int damage):
+    Hero(name, health, damage)
 {
-    return m_damage;
-}
 
-bool Mag::isDead()
-{
-    return m_hp<=0;
-}
-
-int Mag::getHp() const
-{
-    return m_hp;
 }

@@ -4,10 +4,14 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
-        createhero.cpp \
+        elf.cpp \
         hero.cpp \
+        knight.cpp \
+        mag.cpp \
         main.cpp
 
 HEADERS += \
-    createhero.h \
-    hero.h
+    elf.h \
+    hero.h \
+    knight.h \
+    mag.h
