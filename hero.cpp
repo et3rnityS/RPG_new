@@ -23,10 +23,11 @@ int Hero::getHealth()
     return m_health;
 }
 
-int Hero::doDamage()
+int Hero::doDamage(int step)
 {
     return m_damage;
 }
+
 
 void Hero::getDamage(int damage)
 {
@@ -37,3 +38,9 @@ bool Hero::isDead()
 {
     return m_health<=0;
 }
+
+bool Hero::ult(int step)
+{
+    return false;
+}
+

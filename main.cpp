@@ -20,13 +20,32 @@ int getRandomNumber(int min, int max)
 
 void fight(Hero *hero1, Hero *hero2)
 {
-    while (!(hero1->isDead())&&
-           !(hero2->isDead()))
+    int step = 0;
+    while (!(hero1->isDead())&&!(hero2->isDead()))
     {
-        hero1->getDamage(hero2->doDamage());
-        hero2->getDamage(hero1->doDamage());
+        std::cout<<"Step: "<<step<<std::endl;
+
+        hero2->ult(step);
+        hero1->getDamage(hero2->doDamage(step));
+        std::cout<<hero2->getName()<< " hit "<<hero1->getName()<<" on "<<hero2->doDamage(step)<<std::endl;
         std::cout<<hero1->getName()<<" has "<<hero1->getHealth()<<" hp"<<std::endl;
+
+        if (hero1->isDead())
+        {
+            std::cout<<hero1->getName()<<" is dead"<<std::endl;
+            break;
+        }
+        hero1->ult(step);
+        hero2->getDamage(hero1->doDamage(step));
+        std::cout<<hero1->getName()<< " hit "<<hero2->getName()<<" on "<<hero1->doDamage(step)<<std::endl;
         std::cout<<hero2->getName()<<" has "<<hero2->getHealth()<<" hp"<<std::endl;
+        if (hero2->isDead())
+        {
+            std::cout<<hero2->getName()<<" is dead"<<std::endl;
+            break;
+        }
+
+        ++step;
 
     }
 }
@@ -34,9 +53,10 @@ void fight(Hero *hero1, Hero *hero2)
 int main()
 {
     srand(static_cast<unsigned int>(time(0)));
-    Knight knight("Knight", 20, 2);
-    Elf elf("Elf", 15, 4);
-    Mag mag("Mag", 17, 3);
+    Knight knight("Knight", 50, 2);
+    Elf elf("Elf", 30, 4);
+    Mag mag("Mag", 40, 3);
+
 
     Hero *heroes[] = {&knight, &elf, &mag};
     /*for (int iii=0; iii<3; ++iii)

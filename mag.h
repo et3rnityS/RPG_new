@@ -4,13 +4,11 @@
 
 class Mag : public Hero
 {
-private:
-    std::string m_name;
-    int m_health;
-    int m_damage;
 public:
     Mag();
     Mag(std::string name, int health, int damage);
+    virtual bool ult(int step);
+    virtual void getDamage(int damage, int step);
 };
 
 #endif // MAG_H
