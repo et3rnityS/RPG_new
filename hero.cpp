@@ -5,11 +5,13 @@ Hero::Hero()
 
 }
 
-Hero::Hero(std::string name, int health, int damage)
+Hero::Hero(std::string name, int health, int damage, int cooldown, int duration)
 {
     this->m_name=name;
     this->m_health=health;
     this->m_damage=damage;
+    this->m_cooldown=cooldown;
+    this->m_duration= duration;
 
 }
 
@@ -29,7 +31,7 @@ int Hero::doDamage(int step)
 }
 
 
-void Hero::getDamage(int damage)
+void Hero::getDamage(int damage, int step)
 {
     m_health-=damage;
 }
@@ -43,4 +45,11 @@ bool Hero::ult(int step)
 {
     return false;
 }
+
+int Hero::durationUlt(int step)
+{
+    if (ult(step))
+        return 0;
+}
+
 

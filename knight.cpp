@@ -5,8 +5,8 @@ Knight::Knight()
 
 }
 
-Knight::Knight(std::string name, int health, int damage):
-    Hero(name, health, damage)
+Knight::Knight(std::string name, int health, int damage, int cooldown, int duration):
+    Hero(name, health, damage, cooldown, duration)
 {
 
 }
@@ -14,7 +14,6 @@ bool Knight::ult(int step)
 {
     if (step%3==0&&step!=0)
     {
-       // std::cout<<"Knight has use ulty!"<<std::endl;
         return true;
     }
     return false;

@@ -5,8 +5,8 @@ Mag::Mag()
 
 }
 
-Mag::Mag(std::string name, int health, int damage):
-    Hero(name, health, damage)
+Mag::Mag(std::string name, int health, int damage, int cooldown, int duration):
+    Hero(name, health, damage, cooldown, duration)
 {
 
 }
@@ -15,7 +15,6 @@ bool Mag::ult(int step)
 {
     if (step%3==0&&step!=0)
     {
-        std::cout<<"Mag has used ulty!"<<std::endl;
         return true;
     }
     return false;
@@ -32,4 +31,11 @@ void Mag::getDamage(int damage, int step)
     {
         m_health-=damage;
     }
+}
+
+int Mag::durationUlt(int step)
+{
+    if (ult(step))
+        return 3;
+    return 0;
 }

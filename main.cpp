@@ -18,6 +18,14 @@ int getRandomNumber(int min, int max)
     return static_cast<int>(rand()*fraction*(max - min +1)+min);
 }
 
+enum Heroes
+{
+    KNIGHT,
+    ELF,
+    MAG,
+    MAX_HEROES
+};
+
 void fight(Hero *hero1, Hero *hero2)
 {
     int step = 0;
@@ -26,7 +34,15 @@ void fight(Hero *hero1, Hero *hero2)
         std::cout<<"Step: "<<step<<std::endl;
 
         hero2->ult(step);
-        hero1->getDamage(hero2->doDamage(step));
+        if (hero2->ult(step)&&hero2->durationUlt(step))
+        {
+            for (int duration = 0; duration<hero2->durationUlt(step); ++duration)
+            {
+                hero1->getDamage(hero2->doDamage(step), step);
+                hero2
+            }
+        }
+        hero1->getDamage(hero2->doDamage(step), step);
         std::cout<<hero2->getName()<< " hit "<<hero1->getName()<<" on "<<hero2->doDamage(step)<<std::endl;
         std::cout<<hero1->getName()<<" has "<<hero1->getHealth()<<" hp"<<std::endl;
 
@@ -36,12 +52,12 @@ void fight(Hero *hero1, Hero *hero2)
             break;
         }
         hero1->ult(step);
-        hero2->getDamage(hero1->doDamage(step));
+        hero2->getDamage(hero1->doDamage(step),step);
         std::cout<<hero1->getName()<< " hit "<<hero2->getName()<<" on "<<hero1->doDamage(step)<<std::endl;
         std::cout<<hero2->getName()<<" has "<<hero2->getHealth()<<" hp"<<std::endl;
         if (hero2->isDead())
         {
-            std::cout<<hero2->getName()<<" is dead"<<std::endl;
+            std::cout<<her o2->getName()<<" is dead"<<std::endl;
             break;
         }
 
@@ -59,12 +75,21 @@ int main()
 
 
     Hero *heroes[] = {&knight, &elf, &mag};
-    /*for (int iii=0; iii<3; ++iii)
+
+    while (1)
     {
-        std::cout<<heroes[iii]->getName()<<" has "<<heroes[iii]->getHealth()
-                <<" hp and "<<heroes[iii]->doDamage()<<" damage"<<std::endl;
-    }*/
-    fight(heroes[getRandomNumber(0,2)], heroes[getRandomNumber(0,2)]);
+        /* Реализовать через перегрузку оператора !=  */
+
+        int hero1 = getRandomNumber(0, MAX_HEROES-1);
+        int hero2 = getRandomNumber(0,MAX_HEROES-1);
+        if (hero1!=hero2)
+        {
+            fight(heroes[hero1], heroes[hero2]);
+            break;
+        }
+
+    }
+
 
 
 
