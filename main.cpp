@@ -33,17 +33,9 @@ void fight(Hero *hero1, Hero *hero2)
     {
         std::cout<<"Step: "<<step<<std::endl;
 
-        hero2->ult(step);
-        if (hero2->ult(step)&&hero2->durationUlt(step))
-        {
-            for (int duration = 0; duration<hero2->durationUlt(step); ++duration)
-            {
-                hero1->getDamage(hero2->doDamage(step), step);
-                hero2
-            }
-        }
-        hero1->getDamage(hero2->doDamage(step), step);
-        std::cout<<hero2->getName()<< " hit "<<hero1->getName()<<" on "<<hero2->doDamage(step)<<std::endl;
+        hero1->getDamage(hero2->doDamage());
+
+       // std::cout<<hero2->getName()<< " hit "<<hero1->getName()<<" on "<<std::endl;
         std::cout<<hero1->getName()<<" has "<<hero1->getHealth()<<" hp"<<std::endl;
 
         if (hero1->isDead())
@@ -51,13 +43,12 @@ void fight(Hero *hero1, Hero *hero2)
             std::cout<<hero1->getName()<<" is dead"<<std::endl;
             break;
         }
-        hero1->ult(step);
-        hero2->getDamage(hero1->doDamage(step),step);
-        std::cout<<hero1->getName()<< " hit "<<hero2->getName()<<" on "<<hero1->doDamage(step)<<std::endl;
+        hero2->getDamage(hero1->doDamage());
+       // std::cout<<hero1->getName()<< " hit "<<hero2->getName()<<" on "<<std::endl;
         std::cout<<hero2->getName()<<" has "<<hero2->getHealth()<<" hp"<<std::endl;
         if (hero2->isDead())
         {
-            std::cout<<her o2->getName()<<" is dead"<<std::endl;
+            std::cout<<hero2->getName()<<" is dead"<<std::endl;
             break;
         }
 
@@ -69,9 +60,9 @@ void fight(Hero *hero1, Hero *hero2)
 int main()
 {
     srand(static_cast<unsigned int>(time(0)));
-    Knight knight("Knight", 50, 2);
-    Elf elf("Elf", 30, 4);
-    Mag mag("Mag", 40, 3);
+    Knight knight("Knight", 50, 2, 3, 1);
+    Elf elf("Elf", 30, 4, 2, 2);
+    Mag mag("Mag", 40, 3, 3, 3);
 
 
     Hero *heroes[] = {&knight, &elf, &mag};

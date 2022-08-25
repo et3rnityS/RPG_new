@@ -11,31 +11,29 @@ Mag::Mag(std::string name, int health, int damage, int cooldown, int duration):
 
 }
 
-bool Mag::ult(int step)
+int Mag::ult()
 {
-    if (step%3==0&&step!=0)
-    {
-        return true;
-    }
-    return false;
+    return m_health;
 }
-
-void Mag::getDamage(int damage, int step)
+void Mag::getDamage(int damage)
 {
-    if (ult(step))
+    if (m_counterCooldown==0 && m_counterDuration>0)
     {
-        damage = 0;
+        m_counterDuration--;
+        m_health=ult();
+
+
+    }
+    if (m_counterCooldown==0 && m_counterDuration==0)
+    {
+        m_counterCooldown=m_cooldown;
+        m_counterDuration=m_duration;
+        ;
         m_health-=damage;
     }
     else
     {
+        m_counterCooldown--;
         m_health-=damage;
     }
-}
-
-int Mag::durationUlt(int step)
-{
-    if (ult(step))
-        return 3;
-    return 0;
 }

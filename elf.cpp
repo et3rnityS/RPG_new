@@ -11,28 +11,28 @@ Elf::Elf(std::string name, int health, int damage, int cooldown, int duration):
 
 }
 
-bool Elf::ult(int step)
+int Elf::ult()
 {
-    if (step%2==0&&step!=0)
+   return (m_damage+2);
+}
+
+int Elf::doDamage()
+{
+    if (m_counterCooldown==0&&m_counterDuration>0)
     {
-
-        return true;
+        m_counterDuration--;
+        return ult();
     }
-    return false;
-}
-
-int Elf::doDamage(int step)
-{
-    if (ult(step))
+    if (m_counterCooldown==0 && m_counterDuration==0)
     {
-        return (m_damage+2);
+        m_counterCooldown=m_cooldown;
+        m_counterDuration=m_duration;
+        return m_damage;
     }
-    return m_damage;
+    else
+    {
+        m_counterCooldown--;
+        return m_damage;
+    }
 }
 
-int Elf::durationUlt(int step)
-{
-    if (ult(step))
-        return 3;
-    return 0;
-}

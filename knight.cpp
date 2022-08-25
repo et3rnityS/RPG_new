@@ -10,22 +10,30 @@ Knight::Knight(std::string name, int health, int damage, int cooldown, int durat
 {
 
 }
-bool Knight::ult(int step)
+int Knight::ult()
 {
-    if (step%3==0&&step!=0)
-    {
-        return true;
-    }
-    return false;
+    return (m_damage*2);
 }
 
-int Knight::doDamage(int step)
+int Knight::doDamage()
 {
-    if (ult(step))
+    if (m_counterCooldown==0&&m_counterDuration>0)
     {
-        return m_damage*2;
+        m_counterDuration--;
+        return ult();
+
     }
-    return m_damage;
+    if (m_counterCooldown==0 && m_counterDuration==0)
+    {
+        m_counterCooldown=m_cooldown;
+        m_counterDuration=m_duration;
+        return m_damage;
+    }
+    else
+    {
+        m_counterCooldown--;
+        return m_damage;
+    }
 }
 
 

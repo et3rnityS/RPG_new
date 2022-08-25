@@ -11,16 +11,18 @@ protected:
     int m_damage;
     int m_cooldown;
     int m_duration;
+    int m_counterCooldown;
+    int m_counterDuration;
 public:
     Hero();
     Hero(std::string name, int health, int damage, int cooldown, int duration);
     virtual std::string getName();
     virtual int getHealth();
-    virtual int doDamage(int step);
-    virtual void getDamage(int damage, int step);
+    virtual int doDamage();
+    virtual void getDamage(int damage);
     virtual bool isDead();
-    virtual bool ult(int step);
-    virtual int durationUlt(int step);
+    virtual int ult();
+
 
 
 
