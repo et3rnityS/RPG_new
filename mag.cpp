@@ -21,19 +21,23 @@ void Mag::getDamage(int damage)
     {
         m_counterDuration--;
         m_health=ult();
-
-
     }
-    if (m_counterCooldown==0 && m_counterDuration==0)
+
+    else if (m_counterCooldown==0 && m_counterDuration==0)
     {
         m_counterCooldown=m_cooldown;
         m_counterDuration=m_duration;
-        ;
         m_health-=damage;
     }
+
     else
     {
         m_counterCooldown--;
         m_health-=damage;
     }
+}
+
+void Mag::printHeroDead()
+{
+    std::cout<<"Mag is dead!"<<std::endl;
 }

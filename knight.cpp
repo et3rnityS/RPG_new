@@ -36,4 +36,9 @@ int Knight::doDamage()
     }
 }
 
+void Knight::printHeroDead()
+{
+    std::cout<<"Knight is dead!"<<std::endl;
+}
+
 

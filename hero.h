@@ -22,6 +22,10 @@ public:
     virtual void getDamage(int damage);
     virtual bool isDead();
     virtual int ult();
+    virtual void printHeroDead();
+    virtual void printHeroHealth();
+    virtual void printHeroHit();
+
 
 
 

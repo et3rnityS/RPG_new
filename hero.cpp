@@ -32,7 +32,6 @@ int Hero::doDamage()
     return m_damage;
 }
 
-
 void Hero::getDamage(int damage)
 {
     m_health-=damage;
@@ -47,6 +46,22 @@ int Hero::ult()
 {
 
 }
+
+void Hero::printHeroDead()
+{
+    std::cout<<"Hero is dead!"<<std::endl;
+}
+
+void Hero::printHeroHealth()
+{
+    std::cout<<m_name<<" has "<<m_health<< " hp"<<std::endl;
+}
+
+void Hero::printHeroHit()
+{
+    std::cout<<m_name<<" hit on "<<m_damage<<std::endl;
+}
+
 
 
 

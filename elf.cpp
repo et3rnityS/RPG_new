@@ -36,3 +36,11 @@ int Elf::doDamage()
     }
 }
 
+void Elf::printHeroDead()
+{
+    std::cout<<"Elf is dead"<<std::endl;
+}
+
+
+
+

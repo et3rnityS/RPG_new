@@ -26,43 +26,54 @@ enum Heroes
     MAX_HEROES
 };
 
+void printLog(Hero *hero1, Hero *hero2)
+{
+    std::cout<<hero2->getName()<<" hit "<<hero1->getName()<<" on "<< hero2->doDamage()<<std::endl;
+    std::cout<<hero1->getName()<<" has "<< hero1->getHealth()<<" hp"<<std::endl;
+    std::cout<<hero1->getName()<<" hit "<<hero2->getName()<<" on "<< hero1->doDamage()<<std::endl;
+    std::cout<<hero2->getName()<<" has "<<hero2->getHealth()<< " hp"<<std::endl;
+}
+
 void fight(Hero *hero1, Hero *hero2)
 {
     int step = 0;
     while (!(hero1->isDead())&&!(hero2->isDead()))
     {
-        std::cout<<"Step: "<<step<<std::endl;
+       std::cout<<"Step: "<<step+1<<std::endl;
 
-        hero1->getDamage(hero2->doDamage());
-
-       // std::cout<<hero2->getName()<< " hit "<<hero1->getName()<<" on "<<std::endl;
-        std::cout<<hero1->getName()<<" has "<<hero1->getHealth()<<" hp"<<std::endl;
-
-        if (hero1->isDead())
-        {
-            std::cout<<hero1->getName()<<" is dead"<<std::endl;
-            break;
-        }
         hero2->getDamage(hero1->doDamage());
-       // std::cout<<hero1->getName()<< " hit "<<hero2->getName()<<" on "<<std::endl;
-        std::cout<<hero2->getName()<<" has "<<hero2->getHealth()<<" hp"<<std::endl;
+        hero1->printHeroHit();
         if (hero2->isDead())
         {
-            std::cout<<hero2->getName()<<" is dead"<<std::endl;
+            hero2->printHeroDead();
             break;
         }
+
+        hero1->getDamage(hero2->doDamage());
+        hero2->printHeroHit();
+        if (hero1->isDead())
+        {
+            hero1->printHeroDead();
+            break;
+        }
+
+        hero1->printHeroHealth();
+        hero2->printHeroHealth();
+
 
         ++step;
 
     }
 }
 
+
+
 int main()
 {
     srand(static_cast<unsigned int>(time(0)));
     Knight knight("Knight", 50, 2, 3, 1);
     Elf elf("Elf", 30, 4, 2, 2);
-    Mag mag("Mag", 40, 3, 3, 3);
+    Mag mag("Mag", 40, 3, 3, 2);
 
 
     Hero *heroes[] = {&knight, &elf, &mag};
